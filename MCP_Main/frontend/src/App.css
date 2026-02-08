@@ -1,0 +1,208 @@
+.code-stream {
+  background-image:
+    linear-gradient(90deg, rgba(15, 23, 42, 0) 0%, rgba(34, 211, 238, 0.35) 50%, rgba(15, 23, 42, 0) 100%),
+    repeating-linear-gradient(0deg, rgba(148, 163, 184, 0.12) 0 1px, transparent 1px 28px);
+}
+
+.protocol-diagram {
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.22), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(34, 211, 238, 0.22), transparent 45%),
+    linear-gradient(120deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.6));
+}
+
+.parallax-mask {
+  mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 25%, rgba(0, 0, 0, 1) 70%, transparent 100%);
+}
+
+.hover-preview {
+  pointer-events: none;
+  filter: drop-shadow(0 20px 60px rgba(15, 23, 42, 0.45));
+}
+
+.ai-chip-shell-3d {
+  position: relative;
+  height: 380px;
+  border-radius: 28px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.25), transparent 55%),
+    radial-gradient(circle at 70% 80%, rgba(34, 211, 238, 0.2), transparent 55%),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.98));
+  box-shadow: 0 30px 80px rgba(2, 6, 23, 0.6);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.ai-chip-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(34, 211, 238, 0.18), transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(59, 130, 246, 0.2), transparent 45%),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+  background-size: auto, auto, 26px 26px, 26px 26px;
+  opacity: 0.5;
+}
+
+.ai-chip-plate {
+  position: absolute;
+  inset: 30px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.9));
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  transform: translateZ(8px);
+  box-shadow: inset 0 0 40px rgba(56, 189, 248, 0.12);
+}
+
+.ai-chip-rim {
+  position: absolute;
+  inset: 12px;
+  border-radius: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: inset 0 0 30px rgba(15, 23, 42, 0.9);
+  transform: translateZ(2px);
+}
+
+.ai-chip-die-3d {
+  position: absolute;
+  inset: 90px;
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(30, 64, 175, 0.4), rgba(15, 23, 42, 0.9));
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  transform: translateZ(24px);
+  box-shadow: 0 20px 40px rgba(2, 6, 23, 0.7);
+}
+
+.ai-chip-die-top {
+  position: absolute;
+  inset: 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.6), rgba(37, 99, 235, 0.85));
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.55);
+}
+
+.ai-chip-die-glow {
+  position: absolute;
+  inset: 22px;
+  border-radius: 14px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+  background-size: 10px 10px;
+  opacity: 0.5;
+}
+
+.ai-chip-traces-3d {
+  position: absolute;
+  inset: 12px;
+  border-radius: 18px;
+  background-image:
+    linear-gradient(90deg, rgba(56, 189, 248, 0.35) 1px, transparent 1px),
+    linear-gradient(rgba(56, 189, 248, 0.35) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.2;
+}
+
+.ai-chip-wireburst {
+  position: absolute;
+  inset: 8%;
+  border-radius: 18px;
+  background:
+    linear-gradient(90deg, transparent 0 12%, rgba(56, 189, 248, 0.45) 12% 12.6%, transparent 12.6% 22%),
+    linear-gradient(90deg, transparent 0 62%, rgba(34, 211, 238, 0.55) 62% 62.8%, transparent 62.8% 100%),
+    linear-gradient(0deg, transparent 0 18%, rgba(56, 189, 248, 0.35) 18% 18.6%, transparent 18.6% 28%),
+    linear-gradient(0deg, transparent 0 70%, rgba(34, 211, 238, 0.5) 70% 70.9%, transparent 70.9% 100%),
+    linear-gradient(90deg, transparent 0 40%, rgba(14, 165, 233, 0.6) 40% 40.9%, transparent 41% 100%),
+    linear-gradient(0deg, transparent 0 48%, rgba(14, 165, 233, 0.6) 48% 48.9%, transparent 49% 100%),
+    linear-gradient(90deg, transparent 0 8%, rgba(34, 211, 238, 0.25) 8% 8.4%, transparent 8.4% 100%),
+    linear-gradient(0deg, transparent 0 12%, rgba(34, 211, 238, 0.25) 12% 12.4%, transparent 12.4% 100%),
+    radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.75) 0 2px, transparent 3px),
+    radial-gradient(circle at 32% 62%, rgba(34, 211, 238, 0.7) 0 2px, transparent 3px),
+    radial-gradient(circle at 68% 38%, rgba(56, 189, 248, 0.7) 0 2px, transparent 3px),
+    radial-gradient(circle at 80% 70%, rgba(34, 211, 238, 0.7) 0 2px, transparent 3px);
+  box-shadow:
+    0 0 12px rgba(34, 211, 238, 0.35),
+    inset 0 0 16px rgba(56, 189, 248, 0.2);
+  opacity: 0.85;
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.35));
+}
+
+.ai-chip-pins-3d {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, transparent 8%, rgba(59, 130, 246, 0.65) 8%, rgba(59, 130, 246, 0.65) 10%, transparent 10%),
+    linear-gradient(90deg, transparent 90%, rgba(34, 211, 238, 0.65) 90%, rgba(34, 211, 238, 0.65) 92%, transparent 92%),
+    linear-gradient(transparent 8%, rgba(59, 130, 246, 0.65) 8%, rgba(59, 130, 246, 0.65) 10%, transparent 10%),
+    linear-gradient(transparent 90%, rgba(34, 211, 238, 0.65) 90%, rgba(34, 211, 238, 0.65) 92%, transparent 92%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  background-position: top, bottom, left, right;
+  background-repeat: no-repeat;
+  opacity: 0.55;
+  transform: translateZ(1px);
+}
+
+.ai-chip-pin-row,
+.ai-chip-pin-col {
+  position: absolute;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.7), rgba(59, 130, 246, 0.2));
+  opacity: 0.8;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.4));
+}
+
+.ai-chip-pin-row {
+  height: 6px;
+  width: 70%;
+  left: 15%;
+  border-radius: 999px;
+}
+
+.ai-chip-pin-row-top {
+  top: 22px;
+}
+
+.ai-chip-pin-row-bottom {
+  bottom: 22px;
+}
+
+.ai-chip-pin-col {
+  width: 6px;
+  height: 70%;
+  top: 15%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.7), rgba(59, 130, 246, 0.2));
+}
+
+.ai-chip-pin-col-left {
+  left: 22px;
+}
+
+.ai-chip-pin-col-right {
+  right: 22px;
+}
+
+.ai-chip-wires-top,
+.ai-chip-wires-bottom {
+  position: absolute;
+  left: 50%;
+  width: 220px;
+  height: 40px;
+  transform: translateX(-50%);
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0 10px,
+    rgba(56, 189, 248, 0.8) 10px 12px,
+    transparent 12px 18px
+  );
+  opacity: 0.7;
+}
+
+.ai-chip-wires-top {
+  top: -10px;
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4));
+}
+
+.ai-chip-wires-bottom {
+  bottom: -10px;
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4));
+}

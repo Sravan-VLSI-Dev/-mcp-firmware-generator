@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  background: #0b0f14;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.35);
+}
+
+.neural-grid {
+  background-image:
+    linear-gradient(120deg, rgba(99, 102, 241, 0.12), transparent 60%),
+    radial-gradient(circle at 20% 20%, rgba(34, 211, 238, 0.12), transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(129, 140, 248, 0.15), transparent 40%),
+    linear-gradient(rgba(15, 23, 42, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.4) 1px, transparent 1px);
+  background-size: auto, auto, auto, 28px 28px, 28px 28px;
+  background-position: center;
+}
+
+.signal-glow {
+  box-shadow: 0 0 35px rgba(34, 211, 238, 0.35);
+}
+
+.card-glass {
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  backdrop-filter: blur(16px);
+}
+
+.gradient-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.6), rgba(34, 211, 238, 0.6), transparent);
+}
+
+.scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  inset: -40% 0 0 0;
+  background: linear-gradient(180deg, transparent, rgba(99, 102, 241, 0.18), transparent);
+  animation: scanline 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-30%); }
+  100% { transform: translateY(130%); }
+}
+
+.marquee {
+  display: flex;
+  gap: 32px;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
