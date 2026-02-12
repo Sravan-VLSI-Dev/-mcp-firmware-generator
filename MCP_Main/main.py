@@ -187,12 +187,18 @@ elif USING_OLLAMA:
     ollama_host = os.getenv("OLLAMA_HOST", "http://localhost:11435")
     try:
         ollama_client = ollama.Client(host=ollama_host)
-        LLM_MODEL = os.getenv("OLLAMA_MODEL", "codellama")
+        LLM_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2")
         print(f"✓ Ollama initialized: {LLM_MODEL}")
     except Exception as e:
-        raise ConnectionError(f"Cannot connect to Ollama at {ollama_host}: {e}")
-else:
+        print(f"⚠ Warning: Cannot connect to Ollama at {ollama_host}: {e}")
+        print("⚠ Will attempt reconnection when needed")
+        ollama_client = None
+        LLM_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2")
+
+# Verify at least one LLM provider is available
+if not USING_OPENAI and not USING_OLLAMA:
     raise ImportError("Neither OpenAI nor Ollama available")
+
 
 def extract_includes_from_code(code: str) -> List[str]:
     """Extract all #include statements from generated code."""
@@ -816,6 +822,15 @@ REQUIREMENTS:
             return response.choices[0].message.content
         
         elif USING_OLLAMA:
+            # Ensure ollama client is connected
+            if ollama_client is None:
+                ollama_host = os.getenv("OLLAMA_HOST", "http://localhost:11435")
+                try:
+                    ollama_client = ollama.Client(host=ollama_host)
+                    print(f"✓ Reconnected to Ollama: {LLM_MODEL}")
+                except Exception as e:
+                    raise ConnectionError(f"Cannot connect to Ollama at {ollama_host}: {e}")
+            
             response = ollama_client.chat(
                 model=LLM_MODEL,
                 messages=[
@@ -832,7 +847,7 @@ REQUIREMENTS:
 def generate_documentation_with_llm(code: str, description: str) -> str:
     """Generate markdown documentation."""
     
-    doc_prompt = f"""Generate markdown documentation for this ESP32 code.
+    doc_prompt = f"""Generate documentation for this ESP32 code.
 
 Description: {description}
 
@@ -847,7 +862,7 @@ Include:
 5. Pin Configuration
 6. Troubleshooting
 
-Return ONLY markdown, no code blocks."""
+Return ONLY documentation, no code blocks."""
     
     try:
         if USING_OPENAI:
