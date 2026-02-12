@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import api from "../api";
 
 const tabs = ["code", "analysis", "docs"];
 
@@ -39,11 +40,7 @@ export default function CodeGeneration() {
     setLoading(true);
     setProgress(10);
     try {
-      const response = await fetch("/api/clarifying-questions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ description: prompt })
-      });
+      const response = await api.post(api.clarifyingQuestions, { description: prompt });
       if (!response.ok) throw new Error("Failed to get clarifying questions");
       const data = await response.json();
       setQuestions(data.clarifying_questions || []);
@@ -85,11 +82,7 @@ export default function CodeGeneration() {
         generate_docs: generateDocs,
         context: refinementAnswers ? JSON.stringify(refinementAnswers) : null
       };
-      const response = await fetch("/api/generate-code", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
+      const response = await api.post(api.generateCode, payload);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
       setResult(data);

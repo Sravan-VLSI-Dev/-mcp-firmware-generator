@@ -100,3 +100,25 @@
 2026-02-08 19:39:40,845 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
 2026-02-08 19:39:40,848 - utils.error_handling - INFO - Code generation successful
 2026-02-08 19:42:32,003 - utils.error_handling - INFO - Documentation generated: 10845 characters
+2026-02-08 21:46:08,237 - utils.error_handling - INFO - Starting code generation: Generate ESP32 firmware that takes Serial input co...
+2026-02-08 21:50:36,119 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-08 21:50:36,124 - utils.error_handling - INFO - Code generation successful
+2026-02-08 21:53:00,685 - utils.error_handling - INFO - Documentation generated: 10005 characters
+2026-02-08 21:54:36,083 - utils.error_handling - INFO - Starting code generation: Generate Arduino Uno firmware using ESP32 WiFi lib...
+2026-02-08 21:57:06,877 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-08 21:57:06,878 - utils.error_handling - INFO - Code generation successful
+2026-02-08 22:02:41,707 - utils.error_handling - INFO - Documentation generated: 9703 characters
+2026-02-08 22:05:37,842 - utils.error_handling - INFO - Starting code generation: Generate Arduino Uno firmware using ESP32 WiFi lib...
+2026-02-08 22:10:18,732 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-08 22:10:18,736 - utils.error_handling - INFO - Code generation successful
+2026-02-08 22:13:12,367 - utils.error_handling - INFO - Documentation generated: 10170 characters
+2026-02-08 22:45:49,579 - utils.error_handling - INFO - Starting code generation: Generate ESP32 firmware that takes Serial input co...
+2026-02-08 22:45:53,668 - utils.error_handling - ERROR - Code generation error: 500: LLM error: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2026-02-08 22:47:38,949 - utils.error_handling - INFO - Starting code generation: Generate ESP32 firmware that takes Serial input co...
+2026-02-08 22:54:34,225 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-08 22:54:34,229 - utils.error_handling - INFO - Code generation successful
+2026-02-08 22:56:59,824 - utils.error_handling - INFO - Documentation generated: 10102 characters
+2026-02-09 15:06:39,189 - utils.error_handling - INFO - Starting code generation:  ESP32 temperature sensor with MQTT publishing and...
+2026-02-09 15:11:49,788 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-09 15:11:49,792 - utils.error_handling - INFO - Code generation successful
+2026-02-09 15:13:21,226 - utils.error_handling - INFO - Documentation generated: 10708 characters

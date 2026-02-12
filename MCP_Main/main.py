@@ -13,6 +13,7 @@ from typing import Optional, List, Dict
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
 import uvicorn
@@ -52,6 +53,15 @@ app = FastAPI(
     title="ESP32 Firmware AI Generator",
     description="Code generation with smart library detection",
     version="3.2.0"
+)
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Configure this properly in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 if os.path.exists("./static"):
@@ -1276,10 +1286,12 @@ async def generate_code(request: CodeGenerationRequest):
     )
 
 if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8000))
+    host = os.getenv("HOST", "0.0.0.0")
     uvicorn.run(
         "main:app",
-        host="127.0.0.1",
-        port=8000,
+        host=host,
+        port=port,
         reload=False,
         log_level="info"
     )
