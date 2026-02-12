@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ollama-service
+    env: docker
+    repo: https://github.com/Sravan-VLSI-Dev/-mcp-firmware-generator
+    plan: starter
+    envVars:
+      - key: OLLAMA_HOST
+        value: 0.0.0.0
+      - key: OLLAMA_PORT
+        value: 11434
+    healthCheckPath: /
+    autoDeploy: false

@@ -5,7 +5,11 @@ services:
     buildCommand: "pip install -r requirements.txt"
     startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
     envVars:
-      - key: PLATFORMIO_PROJECT_PATH
+      - key: PLATFORMIO_PROJECT_PATH        
         value: ./esp32_project
       - key: ARDUINO_BUILD_PATH
         value: ./arduino_builds
+      - key: OLLAMA_HOST
+        value: https://your-ollama-service.onrender.com
+      - key: OLLAMA_MODEL
+        value: llama3.2
