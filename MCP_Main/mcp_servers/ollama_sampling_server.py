@@ -28,8 +28,8 @@ class OllamaSamplingServer:
     """Generate clarifying questions for better code generation."""
     
     def __init__(self, host: str = None, model: str = None):
-        self.host = host or os.getenv("OLLAMA_HOST", "http://localhost:11435")
-        self.model = model or os.getenv("OLLAMA_MODEL", "codellama")
+        self.host = host or os.getenv("OLLAMA_HOST", "http://localhost:11434")
+        self.model = model or os.getenv("OLLAMA_MODEL", "llama3.2")
         self.client = ollama.Client(host=self.host)
         self.conversation_history: List[Dict] = []
         
