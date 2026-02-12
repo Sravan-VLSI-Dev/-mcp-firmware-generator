@@ -9,8 +9,5 @@ ENV PORT=11435
 # Expose port
 EXPOSE 11435
 
-# Pre-pull the model
-RUN /bin/ollama pull llama3.2
-
-# Start Ollama
-CMD ["serve"]
+# Start Ollama first in the background, then pull model
+CMD sh -c 'ollama serve & sleep 10 && ollama pull llama3.2 && wait'
