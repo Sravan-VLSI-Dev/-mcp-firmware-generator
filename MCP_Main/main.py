@@ -184,7 +184,7 @@ if USING_OPENAI:
     LLM_MODEL = "gpt-4o-mini"
     print(f"✓ OpenAI initialized: {LLM_MODEL}")
 elif USING_OLLAMA:
-    ollama_host = os.getenv("OLLAMA_HOST", "http://localhost:11434")
+    ollama_host = os.getenv("OLLAMA_HOST", "http://localhost:11435")
     try:
         ollama_client = ollama.Client(host=ollama_host)
         LLM_MODEL = os.getenv("OLLAMA_MODEL", "codellama")
