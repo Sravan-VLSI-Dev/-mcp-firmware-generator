@@ -6,7 +6,10 @@ Phase 9: Thin delegation layer - delegates to specialized servers
 
 import json
 import re
+import subprocess
+import time
 from typing import Dict, List, Optional
+import os
 
 # Import the refactored code quality server
 import sys
@@ -28,14 +31,25 @@ class MCPClient:
         self.servers = {}
         self.processes = {}
         
-        # Initialize code quality analyzer
+        # Try to load MCP server configuration
+        try:
+            with open(server_config_path, 'r') as f:
+                self.server_config = json.load(f)
+            
+            # Start MCP servers if they're not already running
+            self._start_mcp_servers()
+            print("✅ MCP Client initialized")
+        except FileNotFoundError:
+            print("⚠ MCP not installed. Running in standalone mode.")
+            print("✅ MCP Client initialized")
+            self.server_config = {}
+            self.server_config = {"mcpServers": {}}  # Set empty servers dict
+        
+        # Initialize code quality analyzer as backup
         if HAS_QUALITY_SERVER:
             self.quality_analyzer = CodeQualityAnalyzer()
         else:
             self.quality_analyzer = None
-        
-        print("⚠ MCP not installed. Running in standalone mode.")
-        print("✅ MCP Client initialized")
     
     # ============================================================================
     # HARDWARE DATABASE METHODS (Unchanged)
@@ -258,6 +272,28 @@ class MCPClient:
             "default_uart": self.get_default_uart(board),
             "default_i2c": self.get_default_i2c(board)
         }
+    
+    def _start_mcp_servers(self):
+        """Start MCP servers defined in config.json"""
+        if 'mcpServers' not in self.server_config:
+            return
+        
+        for server_name, server_info in self.server_config['mcpServers'].items():
+            try:
+                cmd = [server_info['command']] + server_info['args']
+                env = os.environ.copy()
+                env.update(server_info.get('env', {}))
+                
+                # Start the server process
+                process = subprocess.Popen(cmd, cwd=os.path.dirname(__file__), env=env)
+                self.processes[server_name] = process
+                print(f"🚀 Started {server_name} server")
+                
+                # Give the server a moment to start
+                time.sleep(2)
+            except Exception as e:
+                print(f"❌ Failed to start {server_name} server: {e}")
+                print("⚠ Falling back to standalone mode")
     
     def cleanup(self):
         """Clean up resources."""
