@@ -10,6 +10,6 @@ services:
       - key: ARDUINO_BUILD_PATH
         value: ./arduino_builds
       - key: OLLAMA_HOST
-        value: https://your-ollama-service.onrender.com
+        value: https://your-ollama-service.onrender.com:11435
       - key: OLLAMA_MODEL
         value: llama3.2

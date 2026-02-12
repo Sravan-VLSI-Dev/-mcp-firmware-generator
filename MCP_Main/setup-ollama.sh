@@ -8,6 +8,6 @@ sleep 30
 
 # Pull the model
 echo "Pulling llama3.2 model..."
-curl -X POST http://localhost:11434/api/pull -d '{"name": "llama3.2"}'
+curl -X POST http://localhost:11435/api/pull -d '{"name": "llama3.2"}'
 
 echo "Ollama setup complete!"

@@ -8,6 +8,6 @@ services:
       - key: OLLAMA_HOST
         value: 0.0.0.0
       - key: OLLAMA_PORT
-        value: 11434
+        value: 11435
     healthCheckPath: /
     autoDeploy: false
