@@ -34,7 +34,8 @@ class MCPClient:
         else:
             self.quality_analyzer = None
         
-        print("✅ MCPClient initialized (Phase 9 - Refactored)")
+        print("⚠ MCP not installed. Running in standalone mode.")
+        print("✅ MCP Client initialized")
     
     # ============================================================================
     # HARDWARE DATABASE METHODS (Unchanged)
