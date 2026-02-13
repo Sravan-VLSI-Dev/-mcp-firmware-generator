@@ -1,0 +1,9 @@
+import machine
+import time
+
+pwm = machine.PWM(machine.Pin(15), freq=50)
+
+while True:
+    for i in range(0, 180, 2):
+        pwm.duty_cycle(i * 0.5)
+        time.sleep_ms(1000)

@@ -1,0 +1,360 @@
+"use strict";
+(self.webpackChunkmcp_firmware_frontend = self.webpackChunkmcp_firmware_frontend || []).push([[305], {
+  305(e, s, t) {
+    t.r(s), t.d(s, { default: () => y });
+    var a = t(5043),
+      l = t(3321),
+      i = t(6540),
+      n = t(1985),
+      r = t(5029),
+      d = t(2921),
+      c = t(2309),
+      o = t(579);
+
+    function x(e) {
+      let { label: s = "Initializing" } = e;
+      const { progress: t } = (0, d.p)();
+      return (0, o.jsx)(c.E, {
+        center: !0,
+        children: (0, o.jsxs)("div", {
+          className: "card-glass rounded-xl px-5 py-4 text-xs uppercase tracking-[0.3em] text-slate-200",
+          children: [
+            (0, o.jsx)("div", {
+              className: "mb-2 text-[10px] text-slate-400",
+              children: s
+            }),
+            (0, o.jsx)("div", {
+              className: "h-1.5 w-40 overflow-hidden rounded-full bg-slate-800",
+              children: (0, o.jsx)("div", {
+                className: "h-full bg-gradient-to-r from-indigo-500 via-cyan-400 to-indigo-500",
+                style: { width: "".concat(Math.round(t), "%") }
+              })
+            }),
+            (0, o.jsxs)("div", {
+              className: "mt-2 text-right text-[10px] text-slate-500",
+              children: [Math.round(t), "%"]
+            })
+          ]
+        })
+      })
+    }
+
+    function m() {
+      const e = (0, a.useRef)(null),
+        [s, t] = (0, a.useState)(null),
+        l = (0, a.useMemo)(() => [
+          [0, .6, 0],
+          [-.7, .1, .2],
+          [.7, .1, -.2],
+          [-.3, -.7, .1],
+          [.3, -.7, -.1]
+        ], []),
+        n = (0, a.useMemo)(() => [
+          [l[0], l[1]],
+          [l[0], l[2]],
+          [l[1], l[3]],
+          [l[2], l[4]],
+          [l[3], l[4]]
+        ], [l]);
+      return (0, i.F)((s, t) => {
+        e.current && (e.current.rotation.y += .15 * t)
+      }), (0, o.jsxs)("group", {
+        ref: e,
+        children: [
+          n.map((e, t) => (0, o.jsx)(r.N, {
+            points: e,
+            color: s ? "#22d3ee" : "#475569",
+            lineWidth: 1.2
+          }, t)),
+          l.map((e, a) => (0, o.jsxs)("mesh", {
+            position: e,
+            onPointerOver: () => t(a),
+            onPointerOut: () => t(null),
+            children: [
+              (0, o.jsx)("sphereGeometry", { args: [.08, 16, 16] }),
+              (0, o.jsx)("meshStandardMaterial", {
+                color: s === a ? "#38bdf8" : "#94a3b8",
+                emissive: s === a ? "#38bdf8" : "#0f172a",
+                emissiveIntensity: .4
+              })
+            ]
+          }, a))
+        ]
+      })
+    }
+
+    function h() {
+      return (0, o.jsx)("div", {
+        className: "h-56 w-full",
+        children: (0, o.jsxs)(n.Hl, {
+          camera: { position: [0, 0, 2.5], fov: 50 },
+          children: [
+            (0, o.jsx)("ambientLight", { intensity: .7 }),
+            (0, o.jsx)("pointLight", { position: [3, 3, 3], intensity: .8 }),
+            (0, o.jsx)(a.Suspense, {
+              fallback: (0, o.jsx)(x, { label: "Sync Graph" }),
+              children: (0, o.jsx)(m, {})
+            })
+          ]
+        })
+      })
+    }
+
+    var u = t(2555),
+      p = t(7798),
+      g = t(8567),
+      j = t(9040);
+    const f = [
+      { label: "R3F", tone: "from-indigo-500 to-cyan-400" },
+      { label: "Drei", tone: "from-slate-700 to-slate-500" },
+      { label: "Motion", tone: "from-cyan-500 to-indigo-500" },
+      { label: "Tailwind", tone: "from-sky-500 to-cyan-300" },
+      { label: "MCP", tone: "from-indigo-400 to-slate-700" },
+      { label: "Maath", tone: "from-slate-600 to-indigo-400" }
+    ];
+
+    function b(e) {
+      let { index: s, total: t, angle: a, paused: i, label: n, tone: r } = e;
+      const d = 2 * Math.PI * s / t,
+        c = (0, p.G)(a, e => 92 * Math.cos(e + d)),
+        x = (0, p.G)(a, e => 92 * Math.sin(e + d));
+      return (0, o.jsxs)(l.P.div, {
+        style: { x: c, y: x },
+        className: "absolute left-1/2 top-1/2",
+        children: [
+          (0, o.jsx)("div", {
+            className: "flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-r ".concat(r, " px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-950 shadow-lg"),
+            children: n
+          }),
+          i && (0, o.jsx)("div", {
+            className: "mt-1 text-center text-[10px] uppercase tracking-[0.3em] text-slate-500",
+            children: "Paused"
+          })
+        ]
+      })
+    }
+
+    function v() {
+      const e = (0, g.d)(0),
+        [s, t] = (0, a.useState)(!1);
+      return (0, j.N)((frameTime, delta) => {
+        s || e.set(e.get() + 35e-5 * delta)
+      }), (0, o.jsxs)("div", {
+        className: "relative flex h-60 items-center justify-center",
+        onMouseEnter: () => t(!0),
+        onMouseLeave: () => t(!1),
+        children: [
+          (0, o.jsx)("div", {
+            className: "absolute h-12 w-12 rounded-full bg-gradient-to-br from-indigo-500 via-cyan-400 to-slate-900"
+          }),
+          (0, o.jsx)("div", {
+            className: "absolute h-28 w-28 rounded-full border border-slate-700/70"
+          }),
+          f.map((item, idx) => (0, o.jsx)(b, (0, u.A)({
+            index: idx,
+            total: f.length,
+            angle: e,
+            paused: s
+          }, item), item.label))
+        ]
+      })
+    }
+
+    const N = [
+      { title: "MCP", detail: "Agent protocol coordination" },
+      { title: "Firmware Layers", detail: "Boot, HAL, RTOS, IO" },
+      { title: "Toolchains", detail: "Build, validate, deploy" },
+      { title: "AI Agents", detail: "Deterministic planners" }
+    ];
+
+    function y() {
+      const e = (0, a.useRef)(null);
+      return (0, o.jsxs)("section", {
+        id: "about",
+        className: "relative mx-auto w-full max-w-6xl px-6 py-16",
+        children: [
+          (0, o.jsxs)("div", {
+            className: "mb-10 flex flex-col gap-4",
+            children: [
+              (0, o.jsx)("div", {
+                className: "text-xs uppercase tracking-[0.3em] text-slate-500",
+                children: "Systems Overview"
+              }),
+              (0, o.jsx)("h2", {
+                className: "text-3xl font-semibold text-white",
+                children: "Composable intelligence blocks"
+              }),
+              (0, o.jsx)("p", {
+                className: "max-w-2xl text-slate-400",
+                children: "Modular firmware primitives, protocol-aware orchestration, and MCP pipelines working in a single deterministic environment."
+              })
+            ]
+          }),
+          (0, o.jsxs)("div", {
+            className: "grid gap-8 lg:grid-cols-[1.2fr_0.8fr]",
+            children: [
+              (0, o.jsxs)("div", {
+                className: "space-y-6",
+                children: [
+                  (0, o.jsxs)("div", {
+                    className: "card-glass scanline rounded-3xl p-6",
+                    children: [
+                      (0, o.jsxs)("div", {
+                        className: "flex items-center justify-between",
+                        children: [
+                          (0, o.jsxs)("div", {
+                            children: [
+                              (0, o.jsx)("div", {
+                                className: "text-xs uppercase tracking-[0.3em] text-slate-500",
+                                children: "System graph"
+                              }),
+                              (0, o.jsx)("h3", {
+                                className: "text-xl font-semibold text-white",
+                                children: "Neural protocol mesh"
+                              })
+                            ]
+                          }),
+                          (0, o.jsx)("div", {
+                            className: "rounded-full border border-slate-700/60 px-3 py-1 text-xs text-slate-400",
+                            children: "Live sync"
+                          })
+                        ]
+                      }),
+                      (0, o.jsx)("div", {
+                        className: "mt-4 min-h-[240px] overflow-hidden rounded-2xl border border-slate-800/60 bg-slate-950/40 p-3",
+                        children: (0, o.jsx)(h, {})
+                      })
+                    ]
+                  }),
+                  (0, o.jsxs)("div", {
+                    className: "grid gap-6 lg:grid-cols-2",
+                    children: [
+                      (0, o.jsxs)("div", {
+                        className: "card-glass rounded-3xl p-6",
+                        children: [
+                          (0, o.jsx)("div", {
+                            className: "text-xs uppercase tracking-[0.3em] text-slate-500",
+                            children: "Tooling orbit"
+                          }),
+                          (0, o.jsx)("h3", {
+                            className: "mt-2 text-lg font-semibold text-white",
+                            children: "Stack alignment"
+                          }),
+                          (0, o.jsx)("p", {
+                            className: "mt-2 text-sm text-slate-400",
+                            children: "Observe how core tooling stays synchronized with the MCP runtime as it rotates."
+                          }),
+                          (0, o.jsx)("div", {
+                            className: "mt-4 rounded-2xl border border-slate-800/60 bg-slate-950/40 p-4",
+                            children: (0, o.jsx)("div", {
+                              className: "scale-110",
+                              children: (0, o.jsx)(v, {})
+                            })
+                          })
+                        ]
+                      }),
+                      (0, o.jsxs)("div", {
+                        className: "card-glass rounded-3xl p-6",
+                        children: [
+                          (0, o.jsx)("div", {
+                            className: "text-xs uppercase tracking-[0.3em] text-slate-500",
+                            children: "Orchestration"
+                          }),
+                          (0, o.jsx)("h3", {
+                            className: "mt-2 text-lg font-semibold text-white",
+                            children: "Draggable system blocks"
+                          }),
+                          (0, o.jsx)("p", {
+                            className: "mt-2 text-sm text-slate-400",
+                            children: "Test dependency adjacency between MCP, firmware layers, and agent planners."
+                          }),
+                          (0, o.jsx)("div", {
+                            ref: e,
+                            className: "relative mt-4 h-52 rounded-2xl border border-slate-800/60 p-3",
+                            children: (0, o.jsx)("div", {
+                              className: "grid h-full grid-cols-2 gap-3",
+                              children: N.map(s => (0, o.jsx)(l.P.div, {
+                                drag: !0,
+                                dragConstraints: e,
+                                dragElastic: .2,
+                                dragTransition: {
+                                  bounceStiffness: 240,
+                                  bounceDamping: 18
+                                },
+                                className: "flex items-center justify-center rounded-xl border border-slate-700/70 bg-slate-900/80 px-3 py-2 text-xs text-slate-200",
+                                children: (0, o.jsxs)("div", {
+                                  className: "text-center",
+                                  children: [
+                                    (0, o.jsx)("div", {
+                                      className: "text-[10px] uppercase tracking-[0.2em] text-slate-400",
+                                      children: s.title
+                                    }),
+                                    (0, o.jsx)("div", {
+                                      className: "font-semibold text-white",
+                                      children: s.detail
+                                    })
+                                  ]
+                                })
+                              }, s.title))
+                            })
+                          })
+                        ]
+                      })
+                    ]
+                  })
+                ]
+              }),
+              (0, o.jsxs)("div", {
+                className: "card-glass rounded-3xl p-6",
+                children: [
+                  (0, o.jsx)("div", {
+                    className: "text-xs uppercase tracking-[0.3em] text-slate-500",
+                    children: "Firmware disciplines"
+                  }),
+                  (0, o.jsx)("h3", {
+                    className: "mt-2 text-xl font-semibold text-white",
+                    children: "Deterministic control planes"
+                  }),
+                  (0, o.jsx)("p", {
+                    className: "mt-4 text-sm text-slate-400",
+                    children: "Built to audit toolchain decisions, validate execution branches, and preserve signal fidelity across microcontroller fleets."
+                  }),
+                  (0, o.jsxs)("ul", {
+                    className: "mt-6 space-y-3 text-sm text-slate-300",
+                    children: [
+                      (0, o.jsxs)("li", {
+                        className: "flex items-center gap-3",
+                        children: [
+                          (0, o.jsx)("span", {
+                            className: "h-2 w-2 rounded-full bg-cyan-400"
+                          }), (0, o.jsx)("span", { children: "Protocol schemas versioned per release train." })
+                        ]
+                      }),
+                      (0, o.jsxs)("li", {
+                        className: "flex items-center gap-3",
+                        children: [
+                          (0, o.jsx)("span", {
+                            className: "h-2 w-2 rounded-full bg-indigo-400"
+                          }), (0, o.jsx)("span", { children: "Firmware blocks validated with AI-guided tests." })
+                        ]
+                      }),
+                      (0, o.jsxs)("li", {
+                        className: "flex items-center gap-3",
+                        children: [
+                          (0, o.jsx)("span", {
+                            className: "h-2 w-2 rounded-full bg-slate-500"
+                          }), (0, o.jsx)("span", { children: "MCP agents coordinate deterministic rollouts." })
+                        ]
+                      })
+                    ]
+                  })
+                ]
+              })
+            ]
+          })
+        ]
+      })
+    }
+  }
+}]);
+//# sourceMappingURL=305.3fd8952c.chunk.js.map

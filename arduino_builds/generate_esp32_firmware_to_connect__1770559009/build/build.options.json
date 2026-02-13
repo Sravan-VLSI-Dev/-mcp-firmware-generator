@@ -1,0 +1,9 @@
+{
+  "additionalFiles": "",
+  "compiler.optimization_flags": "-Os",
+  "customBuildProperties": "",
+  "fqbn": "esp32:esp32:esp32",
+  "hardwareFolders": "C:\\Users\\ADMIN\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\3.3.6,C:\\Users\\ADMIN\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\3.3.6",
+  "otherLibrariesFolders": "C:\\Users\\ADMIN\\OneDrive\\Documents\\Arduino\\libraries",
+  "sketchLocation": "D:\\MCP_Main\\MCP_Main\\arduino_builds\\generate_esp32_firmware_to_connect__1770559009"
+}

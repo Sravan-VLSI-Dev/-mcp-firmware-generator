@@ -1,0 +1,7 @@
+{
+  "python.defaultInterpreterPath": "D:/MCP/myenv/Scripts/python.exe",
+  "python.analysis.extraPaths": [
+    "./"
+  ],
+  "python.analysis.useImportHeuristic": true
+}

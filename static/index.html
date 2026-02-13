@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#0b0f14"/>
+    <meta name="description" content="AI-driven firmware systems intelligence portfolio."/>
+    <title>MCP-Based Firmware Generator</title>
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- External Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- NEW: Mermaid Inline Rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+    <!-- Application Scripts and Styles -->
+    <script defer="defer" src="/static/js/main.f5d95939.js"></script>
+    <link href="/static/css/main.8ce38159.css" rel="stylesheet">
+</head>
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <!-- NEW: Mermaid Inline Rendering -->
+    <div id="mermaid-inline-container" style="display:none; margin:16px auto; max-width:1200px; padding:12px;"></div>
+    <!-- NEW: Enhanced Documentation Rendering -->
+    <div id="docs-inline-container" style="display:none; margin:16px auto; max-width:1200px; padding:12px;">
+        <h3 style="margin:0 0 8px 0;">Generated Documentation</h3>
+        <div id="docs-inline-nav" style="margin:8px 0 12px 0; display:flex; flex-wrap:wrap; gap:8px;"></div>
+        <div id="docs-inline-content" style="max-height:520px; overflow:auto; background:#0f141b; border:1px solid #25303f; border-radius:8px; padding:16px; color:#d7e3f4; line-height:1.55;"></div>
+    </div>
+    <script>
+        (function () {
+            function slugify(text) {
+                return String(text || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+            }
+
+            function escapeHtml(text) {
+                return String(text || "")
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;");
+            }
+
+            function renderDocumentation(markdownText) {
+                var wrapper = document.getElementById("docs-inline-container");
+                var content = document.getElementById("docs-inline-content");
+                var nav = document.getElementById("docs-inline-nav");
+                if (!wrapper || !content || !markdownText) {
+                    return;
+                }
+
+                var lines = String(markdownText).split(/\r?\n/);
+                var html = [];
+                var navLinks = [];
+                var inCode = false;
+                var inTable = false;
+                var tableRows = [];
+
+                function flushTable() {
+                    if (!inTable || tableRows.length === 0) return;
+                    html.push("<table style=\"width:100%; border-collapse:collapse; margin:12px 0; font-size:13px;\">");
+                    for (var r = 0; r < tableRows.length; r++) {
+                        html.push("<tr>");
+                        for (var c = 0; c < tableRows[r].length; c++) {
+                            var tag = r === 0 ? "th" : "td";
+                            var style = "border:1px solid #314056; padding:6px 8px; text-align:left;";
+                            html.push("<" + tag + " style=\"" + style + "\">" + escapeHtml(tableRows[r][c].trim()) + "</" + tag + ">");
+                        }
+                        html.push("</tr>");
+                    }
+                    html.push("</table>");
+                    tableRows = [];
+                    inTable = false;
+                }
+
+                for (var i = 0; i < lines.length; i++) {
+                    var line = lines[i];
+
+                    if (line.trim().startsWith("```")) {
+                        flushTable();
+                        if (!inCode) {
+                            inCode = true;
+                            html.push("<pre style=\"background:#0b1118; border:1px solid #2d3b52; padding:12px; border-radius:6px; overflow:auto;\"><code>");
+                        } else {
+                            inCode = false;
+                            html.push("</code></pre>");
+                        }
+                        continue;
+                    }
+
+                    if (inCode) {
+                        html.push(escapeHtml(line) + "\n");
+                        continue;
+                    }
+
+                    if (/^\|.+\|$/.test(line.trim())) {
+                        var row = line.trim().split("|").slice(1, -1);
+                        if (row.join("").replace(/[-: ]/g, "") === "") {
+                            continue;
+                        }
+                        inTable = true;
+                        tableRows.push(row);
+                        continue;
+                    } else {
+                        flushTable();
+                    }
+
+                    var h2 = line.match(/^##\s+(.*)$/);
+                    if (h2) {
+                        var id2 = slugify(h2[1]);
+                        navLinks.push({ id: id2, text: h2[1] });
+                        html.push("<h2 id=\"" + id2 + "\" style=\"margin:22px 0 8px 0; color:#9cd2ff;\">" + escapeHtml(h2[1]) + "</h2>");
+                        continue;
+                    }
+
+                    var h3 = line.match(/^###\s+(.*)$/);
+                    if (h3) {
+                        var id3 = slugify(h3[1]);
+                        html.push("<h3 id=\"" + id3 + "\" style=\"margin:16px 0 8px 0; color:#b7dcff;\">" + escapeHtml(h3[1]) + "</h3>");
+                        continue;
+                    }
+
+                    if (/^\s*-\s+/.test(line)) {
+                        html.push("<div style=\"margin-left:8px;\">&bull; " + escapeHtml(line.replace(/^\s*-\s+/, "")) + "</div>");
+                        continue;
+                    }
+
+                    if (line.trim().length === 0) {
+                        html.push("<div style=\"height:8px;\"></div>");
+                    } else {
+                        html.push("<div>" + escapeHtml(line) + "</div>");
+                    }
+                }
+
+                flushTable();
+
+                content.innerHTML = html.join("");
+                nav.innerHTML = navLinks
+                    .map(function (link) {
+                        return '<a href=\"#' + link.id + '\" style=\"font-size:12px; padding:4px 8px; border:1px solid #314056; border-radius:4px; color:#9cd2ff; text-decoration:none;\">' + escapeHtml(link.text) + '</a>';
+                    })
+                    .join("");
+                wrapper.style.display = "block";
+            }
+
+            function renderInlineMermaid(mermaidCode, mermaidUrl) {
+                var container = document.getElementById("mermaid-inline-container");
+                if (!container || !mermaidCode) {
+                    return;
+                }
+
+                var safeUrl = mermaidUrl ? '<div style="margin-top:8px;"><a href="' + mermaidUrl + '" target="_blank" rel="noopener noreferrer">Open in Mermaid Live</a></div>' : '';
+                container.style.display = "block";
+                container.innerHTML = '<h3 style="margin:0 0 8px 0;">Circuit Diagram</h3><div class="mermaid">' + mermaidCode + '</div>' + safeUrl;
+
+                try {
+                    mermaid.init(undefined, container.querySelectorAll(".mermaid"));
+                } catch (err) {
+                    console.error("Mermaid render error:", err);
+                }
+            }
+
+            var originalFetch = window.fetch;
+            window.fetch = async function () {
+                var response = await originalFetch.apply(this, arguments);
+                try {
+                    var req = arguments[0];
+                    var requestUrl = typeof req === "string" ? req : ((req && req.url) ? req.url : "");
+                    if (requestUrl.indexOf("/api/generate-code") !== -1) {
+                        var clone = response.clone();
+                        var data = await clone.json();
+                        if (data && data.mermaid_code) {
+                            renderInlineMermaid(data.mermaid_code, data.mermaid_url);
+                        }
+                        if (data && data.documentation) {
+                            renderDocumentation(data.documentation);
+                        }
+                    }
+                } catch (err) {
+                    console.error("Inline diagram hook error:", err);
+                }
+                return response;
+            };
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "additionalFiles": "",
+  "compiler.optimization_flags": "-Os",
+  "customBuildProperties": "",
+  "fqbn": "esp32:esp32:esp32",
+  "hardwareFolders": "C:\\Users\\Tarun Sam\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\3.3.6,C:\\Users\\Tarun Sam\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\3.3.6",
+  "otherLibrariesFolders": "C:\\Users\\Tarun Sam\\OneDrive\\Documents\\Arduino\\libraries",
+  "sketchLocation": "C:\\Users\\Tarun Sam\\Library\\Projects\\MCP\\arduino_builds\\water_level_sensor_1770854995"
+}
