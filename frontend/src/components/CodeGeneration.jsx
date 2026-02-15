@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-const tabs = ["code", "analysis", "docs"];
+const tabs = ["code", "analysis", "docs", "diagram"];
 
 export default function CodeGeneration() {
   const [prompt, setPrompt] = useState("");
@@ -20,6 +20,12 @@ export default function CodeGeneration() {
   const lineCount = useMemo(() => {
     if (!result?.generated_code) return "--";
     return result.generated_code.split("\n").length;
+  }, [result]);
+
+  const librarySummary = useMemo(() => {
+    if (!result?.detected_libraries?.length) return "No libraries";
+    if (result.detected_libraries.length <= 3) return result.detected_libraries.join(", ");
+    return `${result.detected_libraries.slice(0, 3).join(", ")} +${result.detected_libraries.length - 3} more`;
   }, [result]);
 
   const handleGenerate = async () => {
@@ -224,7 +230,7 @@ export default function CodeGeneration() {
 
         <div
           className={`mt-6 grid gap-6 ${
-            activeTab === "docs" ? "grid-cols-1" : "lg:grid-cols-[0.6fr_0.4fr]"
+            activeTab === "docs" || activeTab === "diagram" ? "grid-cols-1" : "lg:grid-cols-[0.6fr_0.4fr]"
           }`}
         >
           <div className="card-glass rounded-3xl p-6">
@@ -297,8 +303,54 @@ export default function CodeGeneration() {
                 </div>
               </div>
             )}
+            {activeTab === "diagram" && (
+              <div className="space-y-4 text-sm text-slate-300">
+                <div className="rounded-2xl border border-slate-800/70 bg-slate-950/70 p-4">
+                  <div className="text-xs uppercase tracking-[0.3em] text-slate-500">Circuit Diagram</div>
+                  <div className="mt-3">
+                    {result?.mermaid_url ? (
+                      <iframe
+                        title="Mermaid Circuit Diagram"
+                        src={result.mermaid_url}
+                        className="h-[440px] w-full rounded-xl border border-slate-800/70 bg-slate-950"
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <pre className="max-h-[420px] overflow-auto whitespace-pre-wrap rounded-xl border border-slate-800/70 bg-slate-950/80 p-3 text-xs text-slate-300">
+                        {result?.mermaid_code || "Circuit diagram will appear here after generation."}
+                      </pre>
+                    )}
+                  </div>
+                  {result?.mermaid_url && (
+                    <a
+                      className="mt-3 inline-block rounded-full border border-cyan-500/40 px-4 py-2 text-xs uppercase tracking-[0.3em] text-cyan-200"
+                      href={result.mermaid_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Open Mermaid Live
+                    </a>
+                  )}
+                </div>
+                <div className="grid gap-4 md:grid-cols-3">
+                  <div className="rounded-2xl border border-slate-800/70 bg-slate-950/70 p-4">
+                    <div className="text-xs uppercase tracking-[0.3em] text-slate-500">Compilation</div>
+                    <div className="mt-2 text-sm text-slate-200">{result?.compilation_status || "No data"}</div>
+                  </div>
+                  <div className="rounded-2xl border border-slate-800/70 bg-slate-950/70 p-4">
+                    <div className="text-xs uppercase tracking-[0.3em] text-slate-500">Libraries</div>
+                    <div className="mt-2 text-sm text-slate-200">{librarySummary}</div>
+                  </div>
+                  <div className="rounded-2xl border border-slate-800/70 bg-slate-950/70 p-4">
+                    <div className="text-xs uppercase tracking-[0.3em] text-slate-500">Code Lines</div>
+                    <div className="mt-2 text-sm text-slate-200">{lineCount}</div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-          {activeTab !== "docs" && (
+          {activeTab !== "docs" && activeTab !== "diagram" && (
             <div className="card-glass rounded-3xl p-6">
             <div className="text-xs uppercase tracking-[0.3em] text-slate-500">Compilation</div>
             <div className="mt-3 text-sm text-slate-300">

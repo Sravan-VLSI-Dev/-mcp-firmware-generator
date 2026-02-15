@@ -5,7 +5,7 @@ import tempfile
 import os
 
 app = FastAPI()
-ARDUINO_CLI = r"C:\Program Files\Arduino CLI\arduino-cli.exe"
+ARDUINO_CLI = r"D:\\MCP\\arduino-cli.exe"
 class CompileRequest(BaseModel):
     code: str
     board: str

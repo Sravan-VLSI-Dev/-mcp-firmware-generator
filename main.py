@@ -1370,14 +1370,15 @@ async def generate_code(request: CodeGenerationRequest):
         "optimization_notes": "Prefer millis()-based scheduling and reduce blocking delays where possible."
     }
 
-    # GENERATE DOCUMENTATION (Phase 7: Enhanced) - ALWAYS GENERATE
+    # --- NEW: Generate Circuit Diagram Assets (Always) ---
+    diagram_assets = docs_generator.generate_diagram_assets(code_only)
+    mermaid_code = diagram_assets.get("mermaid_code")
+    mermaid_url = diagram_assets.get("diagram_url")
+    
+    # GENERATE DOCUMENTATION (Phase 7: Enhanced) - CONDITIONAL
     if request.generate_docs:
         print(f"\nGenerating comprehensive documentation (Phase 7)...")
         try:
-            # --- NEW: Evaluation Metrics ---
-            diagram_assets = docs_generator.generate_diagram_assets(code_only)
-            mermaid_code = diagram_assets.get("mermaid_code")
-            mermaid_url = diagram_assets.get("diagram_url")
 
             # Use Phase 7 Documentation Generator
             doc_content = docs_generator.generate_full_documentation(

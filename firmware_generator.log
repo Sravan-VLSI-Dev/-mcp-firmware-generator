@@ -143,3 +143,57 @@
 2026-02-12 22:35:25,403 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
 2026-02-12 22:35:25,405 - utils.error_handling - INFO - Code generation successful
 2026-02-12 22:36:10,312 - utils.error_handling - INFO - Documentation generated: 4493 characters
+2026-02-15 10:08:18,525 - utils.error_handling - INFO - Starting code generation: ESP32 temperature sensor with MQTT publishing and ...
+2026-02-15 10:08:20,600 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 404 Not Found"
+2026-02-15 10:08:23,111 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 404 Not Found"
+2026-02-15 10:08:23,113 - utils.error_handling - ERROR - Code generation error: 500: LLM error: model 'llama3:latest' not found (status code: 404)
+2026-02-15 12:21:55,740 - utils.error_handling - INFO - Starting code generation: ESP32 temperature sensor with MQTT publishing and ...
+2026-02-15 12:21:57,856 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 404 Not Found"
+2026-02-15 12:22:01,142 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 404 Not Found"
+2026-02-15 12:22:01,145 - utils.error_handling - ERROR - Code generation error: 500: LLM error: model 'llama3:latest' not found (status code: 404)
+2026-02-15 14:38:09,383 - utils.error_handling - INFO - Starting code generation: ESP32 temperature sensor with MQTT publishing and ...
+2026-02-15 14:45:27,495 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-15 14:45:27,498 - utils.error_handling - INFO - Code generation successful
+2026-02-15 14:47:04,195 - utils.error_handling - INFO - Documentation generated: 6195 characters
+2026-02-15 15:43:06,299 - utils.error_handling - INFO - Starting code generation: Blink LED on GPIO 2...
+2026-02-15 15:45:49,819 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-15 15:45:49,822 - utils.error_handling - INFO - Code generation successful
+2026-02-15 15:52:27,412 - utils.error_handling - INFO - Starting code generation: Blink LED on GPIO 2...
+2026-02-15 15:55:02,303 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-15 15:55:02,305 - utils.error_handling - INFO - Code generation successful
+2026-02-15 15:55:19,652 - utils.error_handling - INFO - Starting code generation: Blink LED on GPIO 2...
+2026-02-15 15:56:04,919 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-15 15:56:04,920 - utils.error_handling - INFO - Code generation successful
+2026-02-15 16:00:16,471 - utils.error_handling - INFO - Starting code generation: Blink LED on GPIO 2...
+2026-02-15 16:01:23,692 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-15 16:01:23,693 - utils.error_handling - INFO - Code generation successful
+2026-02-15 16:05:54,806 - utils.error_handling - INFO - Starting code generation: Blink LED on GPIO 2...
+2026-02-15 16:06:42,289 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-15 16:06:42,289 - utils.error_handling - INFO - Code generation successful
+2026-02-15 16:12:42,308 - utils.error_handling - INFO - Starting code generation: Blink LED on GPIO 2...
+2026-02-15 16:14:45,029 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-15 16:14:45,033 - utils.error_handling - INFO - Code generation successful
+2026-02-15 16:56:19,897 - utils.error_handling - INFO - Starting code generation: Blink LED on GPIO 2...
+2026-02-15 16:57:32,045 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-15 16:57:32,048 - utils.error_handling - INFO - Code generation successful
+2026-02-15 16:57:32,056 - utils.error_handling - INFO - Documentation generated: 4730 characters
+2026-02-15 16:57:57,910 - utils.error_handling - INFO - Starting code generation: Temperature sensor with DHT22 on GPIO 14 and LED o...
+2026-02-15 17:00:22,250 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-15 17:00:22,251 - utils.error_handling - INFO - Code generation successful
+2026-02-15 17:02:07,340 - utils.error_handling - INFO - Starting code generation: ESP32 temperature sensor with MQTT publishing and ...
+2026-02-15 17:08:30,048 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-15 17:08:30,050 - utils.error_handling - INFO - Code generation successful
+2026-02-15 17:11:18,775 - utils.error_handling - INFO - Documentation generated: 5564 characters
+2026-02-15 17:30:49,684 - utils.error_handling - INFO - Starting code generation: LED on GPIO 2 and button on GPIO 4...
+2026-02-15 17:32:54,337 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-15 17:32:54,339 - utils.error_handling - INFO - Code generation successful
+2026-02-15 17:32:54,355 - utils.error_handling - INFO - Starting code generation: LED on GPIO 2 and button on GPIO 4...
+2026-02-15 17:34:11,200 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-15 17:34:11,201 - utils.error_handling - INFO - Code generation successful
+2026-02-15 17:46:42,804 - utils.error_handling - INFO - Starting code generation: LED on GPIO 2...
+2026-02-15 17:49:02,179 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-15 17:49:02,182 - utils.error_handling - INFO - Code generation successful
+2026-02-15 19:10:57,334 - utils.error_handling - INFO - Starting code generation: ESP32 temperature sensor with MQTT publishing and ...
+2026-02-15 19:16:10,549 - httpx - INFO - HTTP Request: POST http://localhost:11435/api/chat "HTTP/1.1 200 OK"
+2026-02-15 19:16:10,552 - utils.error_handling - INFO - Code generation successful
+2026-02-15 19:17:44,192 - utils.error_handling - INFO - Documentation generated: 4909 characters
